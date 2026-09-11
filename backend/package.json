@@ -1,0 +1,13 @@
+{
+  "name": "@fladapt/backend",
+  "version": "1.0.0",
+  "description": "Core resolution engine for Fladapt",
+  "main": "src/model.ts",
+  "types": "src/model.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["layout", "resolution", "adaptive"],
+  "license": "MIT"
+}
