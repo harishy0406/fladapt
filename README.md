@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/logo.png" alt="Fladapt Logo" width="420" />
+  <img src="assets/Fladapt-ani.gif" alt="Fladapt Logo" width="420" />
 </p>
 <p align="center">
   <strong>An explainable, deterministic adaptive layout engine that transforms a single content specification into optimized layouts for multiple surfaces — mobile, social, kiosks, digital billboards, and broadcast displays.</strong>
