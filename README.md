@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="assets/Fladapt-ani.gif" alt="Fladapt Logo" width="420" />
+  <img src="assets/Fladapt-ani.gif" alt="Fladapt Logo" width="520" height="200" />
 </p>
 <p align="center">
   <strong>An explainable, deterministic adaptive layout engine that transforms a single content specification into optimized layouts for multiple surfaces — mobile, social, kiosks, digital billboards, and broadcast displays.</strong>
+  
 </p>
 
 <p align="center">
@@ -11,6 +12,8 @@
   <a href="https://vitejs.dev"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js_18+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /></a>
   <a href="https://vercel.com"><img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" /></a>
+  <a href="https://claude.com/product/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://opencode.ai"><img src="https://img.shields.io/badge/OpenCode-000000?style=for-the-badge&logo=opencode&logoColor=white" alt="OpenCode" /></a>
 </p>
 
 ---
@@ -20,7 +23,7 @@
 Modern content (broadcast lower-thirds, kiosks, mobile apps) must present the same logical information across radically different physical surfaces — different aspect ratios, resolutions, orientations, and safe-area constraints. Traditional responsive design solves this with hardcoded breakpoints and CSS media queries: a fixed layout per known screen size. This does not generalize to unseen surfaces, and it hides the actual decision logic inside CSS, making layout choices unexplainable.
 
 <p align="center">
-  <img src="docs/images/layout.png" alt="Fladapt Demo" width="600" height="400" />
+<img width="1408" height="735" alt="image" src="https://github.com/user-attachments/assets/8898c868-2b22-424f-81cc-0ea511df1f61" />
 </p>
 
 - 🎯 **Surface-agnostic resolution** — One layout spec resolves correctly across mobile portrait, mobile landscape, broadcast lower-third, and square kiosk out of the box
@@ -64,7 +67,7 @@ Modern content (broadcast lower-thirds, kiosks, mobile apps) must present the sa
 ## 🏗️ Architecture
 
 <p align="center">
-  <img src="docs/images/architecture.jpg" alt="Fladapt System Architecture" width="800" height="500" />
+  <img src="https://github.com/harishy0406/fladapt/blob/main/docs/ARCHITECTURE-DIAGRAM.png" alt="Fladapt System Architecture" width="800" height="500" />
 </p>
 
 Fladapt is split into two cleanly separated layers:
@@ -172,7 +175,7 @@ Because Steps 1–2 only consume `width`, `height`, `orientation`, and `insets`,
 Fladapt resolves the same layout spec correctly across all four built-in surface types out of the box:
 
 <p align="center">
-<img width="800" height="500" alt="Fladapt Surfaces" src="https://github.com/user-attachments/assets/0b699c32-79f1-4c89-9cb9-c6c6c782d20c" />
+<img width="1781" height="896" alt="image" src="https://github.com/user-attachments/assets/6d0df7e3-ce82-4a24-817e-98ac02a9fd0b" />
 </p>
 
 | Surface | Dimensions | Category | Safe Area |
@@ -246,7 +249,7 @@ A video demonstration of the system resolving layouts across surfaces can be acc
 
 - **Demo Video Link:** _click the icon for Video_
 
-[<img width="321" height="82" alt="image" src="https://github.com/user-attachments/assets/b7481505-0d8a-4e6d-b340-b55a68008447" />](https://drive.google.com/file/d/1eis1cdGP6pnC0L0JYVis4U4JpVaSbi8O/view?usp=sharing)
+[<img width="321" height="82" alt="image" src="https://github.com/user-attachments/assets/b7481505-0d8a-4e6d-b340-b55a68008447" />](https://drive.google.com/file/d/16yNi6ehdoAfDbgiMyvGXr0V6DoWNlG21/view?usp=sharing)
 
 ---
 
@@ -279,27 +282,6 @@ Fladapt was built around **explainability** and **generalizability**.
 
 ---
 
-### 🚨🔜 Limitations and Next Steps
-
-- **Positioning Algorithm**: Uses simple anchor/flow rules, not a general 2D packing algorithm — acceptable per assignment guidance to avoid over-engineering
-- **Text Measurement**: Uses an estimated character/line budget rather than real font metrics — accurate text shaping is out of scope for the resolution algorithm itself
-- **No Two-Pass Optimization**: Degradation is monotonic and one-directional per the greedy design — no "if hiding element A frees enough space to un-shrink element B" optimization
-- **In-Memory FAISS Index**: Currently, the FAISS index is kept in memory and rebuilt from database rows on startup. For massive datasets, we would migrate this to the `pgvector` extension in PostgreSQL so embeddings reside alongside relational data.
-- **PDF Viewer Highlighting**: The current frontend displays the page number and quoted verbatim snippet. In the next iteration, we would use a PDF renderer library like `react-pdf` to highlight the exact bounding box of the source text inside the PDF page.
-- **Human-in-the-Loop Edits**: Fladapt v1 is read-only over generated facts. Adding support for analysts to manually correct or annotate disputed relationships would make it a complete collaborative audit tool.
-- **Streaming Extraction**: Currently, the entire document is processed synchronously. Adding WebSocket-based streaming would show facts appearing in real-time as pages are processed.
-- **Multi-Modal Extraction**: Tables and charts in PDFs are currently extracted as text. Adding vision-based extraction would improve accuracy for structured tabular data.
-
----
-
-### Before You Submit Checklist
-
-- [x] The project runs from these instructions and accepts new surfaces through a form and API
-- [x] Results contain resolved layouts, positions, sizes, and per-element traces
-- [x] All four required surfaces are demonstrated and a 5th unseen surface works
-- [x] Approach is documented with a demo video (3 minutes or less)
-
----
 
 ## 📂 Project Structure
 
@@ -377,17 +359,6 @@ fladapt/
 
 ---
 
-## 📊 Monitoring & Observability
-
-<img width="900" height="300" alt="Fladapt_Monitoring" src="https://github.com/user-attachments/assets/525a3e80-8e1a-4715-a590-ca280f6e4a0d" />
-
-### Performance Targets
-
-- **Resolution**: Full resolution of a ~20-element spec across a surface in under 5ms
-- **No async/network calls** in the resolution path — pure synchronous computation
-- **Deterministic**: Same (spec, surface) input always produces the same output and trace
-
----
 
 ## 🧪 Testing
 
@@ -434,11 +405,6 @@ This launches all services: **Frontend** + **Backend**.
 | Backend | Render / Railway | Set `NODE_ENV` and `TS_NODE` |
 | Database | Supabase / Neon | Optional, for persisted specs |
 
----
-
-## 📄 License
-
-This project was built as part of the Fladapt assignment.
 
 ---
 
