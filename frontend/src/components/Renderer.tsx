@@ -21,6 +21,7 @@ interface ElementStyles {
   color: string;
   fontFamily: string;
   padding: number;
+  border?: string;
 }
 
 /** Props for the Renderer component. */

@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@backend": resolve(__dirname, "../../backend/src"),
+      "@backend": resolve(__dirname, "../backend/src"),
+      "@assets": resolve(__dirname, "../assets"),
     },
   },
   root: __dirname,
