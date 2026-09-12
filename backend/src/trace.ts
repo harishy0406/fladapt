@@ -64,6 +64,8 @@ export function truncateAttempted(
   return `${id}: truncate to ${maxLines} lines; continuing degradation ladder.`;
 }
 
+import { DegradationStep } from "./model";
+
 // ---------------------------------------------------------------------------
 // Exported: build the full trace array for one element given the applied steps
 // ---------------------------------------------------------------------------
@@ -75,7 +77,7 @@ export interface TraceEntryResult {
 /** Combine applied degradation steps into a coherent trace array. */
 export function buildTrace(
   id: string,
-  steps: { type: string; to?: { width: number; height: number } }[],
+  steps: DegradationStep[],
   preferred: { width: number; height: number },
   container: { width: number; height: number },
   finalPlaced: boolean

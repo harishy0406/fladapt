@@ -1,6 +1,6 @@
 
 
-import { computeEffectiveCanvas, classifySurface } from "./model";
+import { computeEffectiveCanvas, classifySurface, Inset, SurfaceProfile } from "./model";
 
 // Inset merger: merges safeArea and bleed if both are present.
 // They compose additively since both shrink/expand usable space from the outer edge.
@@ -9,7 +9,7 @@ export function mergeInsets(
   bleed?: Inset
 ): Inset {
   if (!safeArea && !bleed) return { top: 0, right: 0, bottom: 0, left: 0 };
-  if (!safeArea) return bleed;
+  if (!safeArea) return bleed!;
   if (!bleed) return safeArea;
   return {
     top: safeArea.top + bleed.top,

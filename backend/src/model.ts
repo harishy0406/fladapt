@@ -20,6 +20,12 @@ export interface SurfaceProfile {
   pixelDensity?: number;
 }
 
+export interface A11yConstraint {
+  minTouchTarget?: number; // e.g., 48px for WCAG 2.5.5 / 44px for iOS HIG
+  minContrastRatio?: number; // e.g., 4.5 for WCAG AA
+  requiresHighContrastBackdrop?: boolean;
+}
+
 export interface ElementSpec {
   id: string;
   kind: "text" | "image" | "logo" | "cta" | "meta" | string;
@@ -29,6 +35,7 @@ export interface ElementSpec {
   aspectLocked?: boolean;
   degradation: DegradationStep[];
   content?: Record<string, unknown>;
+  a11y?: A11yConstraint;
 }
 
 export type DegradationStep =
@@ -41,6 +48,11 @@ export interface ResolvedLayout {
   surfaceId: string;
   specId: string;
   elements: ResolvedElement[];
+  a11ySummary?: {
+    touchCompliant: boolean;
+    contrastCompliant: boolean;
+    issues: string[];
+  };
 }
 
 export interface ResolvedElement {
@@ -50,6 +62,12 @@ export interface ResolvedElement {
   size: { width: number; height: number };
   appliedDegradation: DegradationStep[];
   trace: string[];
+  a11yStatus?: {
+    touchTargetCompliant: boolean;
+    touchTargetSize: number;
+    contrastRatio?: number;
+    notes?: string;
+  };
 }
 
 // ---------------------------------------------------------------------------

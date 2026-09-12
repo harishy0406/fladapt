@@ -1,10 +1,10 @@
 
 
-import { ElementSpec, DegradationStep } from "../model";
+import { ElementSpec } from "../model";
 
 // Example layout spec with three elements: logo, headline, CTA.
 // Priorities: lower number = more important (processed first).
-export const exampleSpec = {
+export const exampleSpec: { id: string; elements: ElementSpec[] } = {
   id: "example-spec",
   elements: [
     {
